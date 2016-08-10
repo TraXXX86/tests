@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+/*Navigation style*/
+nav {
+    background: white;
+    float: left;
+}
+
+nav a {
+    text-decoration: none;
+    color: olive;
+}
+
+nav a:HOVER {
+    color: fuchsia;
+}
+
+nav ul {
+    list-style: none;
+    padding: 30px
+}
+
+header {
+    background: white;
+}

@@ -1,6 +1,6 @@
 <header>
 
-    <img alt="Pikachu" src="../../img/pika.jpg">
+    <img alt="Building" src="../../img/building.jpg">
 
     <?php
     echo "Coucou " . $_SESSION['mail'];

@@ -16,7 +16,9 @@
         // Includes
         include 'serv/auth.php';
         // Show error message if need
-        showErrorAuth( $_SESSION['erreur']);
+        if (isset($_SESSION['erreur'])) {
+            showErrorAuth($_SESSION['erreur']);
+        }
         ?>
     </div>
 </div>

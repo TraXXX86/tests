@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-4 col-md-offset-4">
         <br/>
-        <form method="post" action="serv/auth_page_serv.php" enctype="multipart/form-data">
+        <form method="post" action="../../serv/form/authForm_serv.php" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="fieldMail">Email address</label>
                 <input type="email" class="form-control" id="fieldMail" placeholder="Email" name="mail">
@@ -14,11 +14,9 @@
         </form>
         <?php
         // Includes
-        include_once ("serv/utils.php");
+        include_once ("../../serv/utils.php");
         // Show error message if need
         if (isset($_SESSION['erreur'])) {
-            //$error = new AlertMessage(AlertMessage::STYLE_ERROR, $_SESSION['erreur']);
-            //$error->showFeedback();
             showError($_SESSION['erreur']);
         }
         ?>

@@ -8,7 +8,7 @@ if (isset($_SESSION['erreur'])) {
 <div class="row">
     <div class="col-sm-8 col-md-offset-2">
         <br/>
-        <form class="form-horizontal" method="post" action="../../serv/buildingForm_serv.php" enctype="multipart/form-data">
+        <form class="form-horizontal" method="post" action="../../serv/form/buildingForm_serv.php" enctype="multipart/form-data">
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="fieldName">Nom du bâtiment</label>
                 <div class="col-sm-9">

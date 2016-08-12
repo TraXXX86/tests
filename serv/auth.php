@@ -26,7 +26,7 @@ function isAuthorized($mail)
 {
     // If user is not authentifiated, go back to index
     if (!isset($mail) || is_null($mail) || $mail === '') {
-        checkAuthorization('', 'Veuillez vous authentifier', 'index.php');
+        checkAuthorization('', 'Veuillez vous authentifier', '../auth/authentication.php');
     }
 }
 

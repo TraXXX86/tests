@@ -19,7 +19,7 @@ $currentPage = 'home';
     <title>My first HTML5/PHP page</title>
     <!--<link rel="stylesheet" href="style/main.css"/>-->
     <!-- Bootstrap -->
-    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>

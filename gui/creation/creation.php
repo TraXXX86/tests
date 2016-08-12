@@ -19,7 +19,7 @@ $currentPage = 'creation';
     <meta charset="UTF-8">
     <title>My first HTML5/PHP page</title>
     <!-- Bootstrap -->
-    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>

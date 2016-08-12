@@ -14,10 +14,10 @@
         </form>
         <?php
         // Includes
-        include 'serv/auth.php';
+        include 'serv/utils.php';
         // Show error message if need
         if (isset($_SESSION['erreur'])) {
-            showErrorAuth($_SESSION['erreur']);
+            showError($_SESSION['erreur']);
         }
         ?>
     </div>

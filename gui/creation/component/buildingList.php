@@ -1,7 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mjaouen
- * Date: 10/08/2016
- * Time: 16:28
- */
+// Includes
+include("../../serv/utils.php");
+
+// Show error message if need
+if (isset($_SESSION['feedback'])) {
+    $feedback = $_SESSION['feedback'];
+    $feedbackObj = unserialize($feedback);
+    showFeedback($feedbackObj);
+}

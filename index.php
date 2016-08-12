@@ -14,7 +14,7 @@ session_start();
 
 <body>
 
-<?php include("gui/auth/auth_page.php"); ?>
+<?php include("gui/auth/authForm.php"); ?>
 
 </body>
 </html>

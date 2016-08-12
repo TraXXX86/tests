@@ -9,7 +9,7 @@ include("../../serv/auth.php");
 isAuthorized($_SESSION['mail']);
 
 // Set current page
-$currentPage = 'creation';
+$currentPage = 'buildings';
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +31,7 @@ $currentPage = 'creation';
         <?php include("../menu/component/menus.php"); ?>
     </div>
     <div class="col-md-8">
-        <?php include("component/buildingForm.php"); ?>
+        <?php include("component/buildingList.php"); ?>
     </div>
 </div>
 

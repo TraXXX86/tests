@@ -42,14 +42,3 @@ function checkAuthorization($mail, $errorString, $escapePagePath)
     header('Location: ' . $escapePagePath);
     exit();
 }
-
-/**
- * Show error panel with param message
- * @param $erreur
- */
-function showErrorAuth($error)
-{
-    if (isset($error) && !$error == '') {
-        echo '</br><div class="alert alert-danger" role="alert">' . $error . '</div>';
-    }
-}

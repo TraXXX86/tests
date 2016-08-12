@@ -15,6 +15,6 @@ function isActivePage($comparePage, $currentPage)
         </li>
         <li role="presentation" <?php isActivePage('creation', $currentPage) ?> ><a href="../creation/creation.php">Création
                 de batiment</a></li>
-        <li role="presentation"><a href="#">Messages</a></li>
+        <li role="presentation" <?php isActivePage('buildings', $currentPage) ?> ><a href="../creation/recap.php">Liste de batiments</a></li>
     </ul>
 </nav>

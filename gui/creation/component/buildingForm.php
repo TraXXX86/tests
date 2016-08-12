@@ -1,7 +1,4 @@
 <?php
-// Includes
-include("../../serv/utils.php");
-
 // Show error message if need
 if (isset($_SESSION['erreur'])) {
     showError($_SESSION['erreur']);

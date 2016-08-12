@@ -6,7 +6,6 @@
  */
 function connectDB()
 {
-
     $ini = parse_ini_file('../config/config.ini');
 
     $dbservername = $ini['dbservername'];

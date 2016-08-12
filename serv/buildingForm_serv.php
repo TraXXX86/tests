@@ -2,7 +2,7 @@
 session_start();
 
 // Includes
-include("buildings.php");
+include_once __DIR__ . "/buildings.php";
 
 if ($_POST['name'] == '' || $_POST['address'] == '') {
     $_SESSION['erreur'] = 'Veuillez renseigner tous les champs';

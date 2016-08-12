@@ -1,6 +1,6 @@
 <?php
 
-require ("generic_dao.php");
+require_once ("generic_dao.php");
 
 /**
  * Add new building into DB (draft)

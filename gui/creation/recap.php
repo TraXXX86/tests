@@ -3,7 +3,9 @@
 session_start();
 
 // Includes
-include("../../serv/auth.php");
+include_once("../../serv/auth.php");
+include_once("../../serv/utils.php");
+include_once("../../serv/buildings.php");
 
 // Check if user is authentificated
 isAuthorized($_SESSION['mail']);

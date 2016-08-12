@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . "/../dto/alertMessage.php";
+include_once __DIR__ . "/../dto/alertMessage.php";
 
 /**
  * Show error panel with param message

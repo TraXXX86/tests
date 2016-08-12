@@ -49,6 +49,9 @@ class AlertMessage
         return !$this->message == '' && !$this->style == '';
     }
 
+    /**
+     * @return string
+     */
     function __toString()
     {
         return $this->style . " : " . $this->message;

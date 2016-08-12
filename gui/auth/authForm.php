@@ -14,9 +14,11 @@
         </form>
         <?php
         // Includes
-        include 'serv/utils.php';
+        include_once ("serv/utils.php");
         // Show error message if need
         if (isset($_SESSION['erreur'])) {
+            //$error = new AlertMessage(AlertMessage::STYLE_ERROR, $_SESSION['erreur']);
+            //$error->showFeedback();
             showError($_SESSION['erreur']);
         }
         ?>

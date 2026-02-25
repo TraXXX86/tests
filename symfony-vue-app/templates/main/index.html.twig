@@ -117,20 +117,20 @@
     </div>
 
     <div class="button-grid">
-        <button class="btn-popup" @click="showPopup('success')">Succès</button>
-        <button class="btn-popup variant-info" @click="showPopup('info')">Information</button>
-        <button class="btn-popup variant-warn" @click="showPopup('warning')">Attention</button>
-        <button class="btn-popup variant-error" @click="showPopup('error')">Erreur</button>
-        <button class="btn-popup" @click="showPopup('welcome')">Message de bienvenue</button>
-        <button class="btn-popup variant-info" @click="showPopup('generic')">Message générique</button>
+        <button type="button" class="btn-popup variant-success" @click="showPopup('success')">Succès</button>
+        <button type="button" class="btn-popup variant-info" @click="showPopup('info')">Information</button>
+        <button type="button" class="btn-popup variant-warn" @click="showPopup('warning')">Attention</button>
+        <button type="button" class="btn-popup variant-error" @click="showPopup('error')">Erreur</button>
+        <button type="button" class="btn-popup" @click="showPopup('welcome')">Message de bienvenue</button>
+        <button type="button" class="btn-popup variant-info" @click="showPopup('generic')">Message générique</button>
     </div>
 
     {% verbatim %}
-    <div class="popup-overlay" :class="{ visible: popupVisible }" @click.self="closePopup">
+    <div class="popup-overlay" :class="{ visible: popupVisible }" @click.self="closePopup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
         <div class="popup">
-            <h3>{{ currentPopup.title }}</h3>
+            <h3 id="popup-title">{{ currentPopup.title }}</h3>
             <p>{{ currentPopup.message }}</p>
-            <button class="popup-close" @click="closePopup">Fermer</button>
+            <button type="button" class="popup-close" @click="closePopup">Fermer</button>
         </div>
     </div>
     {% endverbatim %}
@@ -163,6 +163,18 @@ createApp({
         },
         closePopup() {
             this.popupVisible = false;
+        },
+        onKeydown(e) {
+            if (e.key === 'Escape') this.closePopup();
+        }
+    },
+    watch: {
+        popupVisible(visible) {
+            if (visible) {
+                window.addEventListener('keydown', this.onKeydown);
+            } else {
+                window.removeEventListener('keydown', this.onKeydown);
+            }
         }
     }
 }).mount('#app');

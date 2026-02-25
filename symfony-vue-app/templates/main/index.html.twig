@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test Agents Cursor - Symfony Vue.js{% endblock %}
+
+{% block stylesheets %}
+<style>
+    .hero {
+        text-align: center;
+        padding: 4rem 0;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(135deg, var(--accent), #7c3aed);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .hero p {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+    }
+    .button-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    .btn-popup {
+        font-family: 'JetBrains Mono', monospace;
+        padding: 1rem 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border: 2px solid var(--accent);
+        background: transparent;
+        color: var(--accent);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .btn-popup:hover {
+        background: var(--accent);
+        color: var(--bg-primary);
+        transform: translateY(-2px);
+    }
+    .btn-popup.variant-info { border-color: #3b82f6; color: #3b82f6; }
+    .btn-popup.variant-info:hover { background: #3b82f6; color: white; }
+    .btn-popup.variant-warn { border-color: #f59e0b; color: #f59e0b; }
+    .btn-popup.variant-warn:hover { background: #f59e0b; color: white; }
+    .btn-popup.variant-error { border-color: #ef4444; color: #ef4444; }
+    .btn-popup.variant-error:hover { background: #ef4444; color: white; }
+    .btn-popup.variant-success { border-color: #22c55e; color: #22c55e; }
+    .btn-popup.variant-success:hover { background: #22c55e; color: white; }
+
+    /* Popup styles */
+    .popup-overlay {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    .popup-overlay.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+    .popup {
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        padding: 2rem;
+        max-width: 400px;
+        width: 90%;
+        border: 1px solid rgba(255,255,255,0.08);
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+    }
+    .popup-overlay.visible .popup {
+        transform: scale(1);
+    }
+    .popup h3 {
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+    }
+    .popup p {
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+    }
+    .popup-close {
+        width: 100%;
+        padding: 0.75rem;
+        background: var(--accent);
+        color: var(--bg-primary);
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: inherit;
+    }
+    .popup-close:hover {
+        background: var(--accent-hover);
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div id="app" class="container">
+    <div class="hero">
+        <h1>Test Agents Cursor</h1>
+        <p>Application Symfony + Vue.js pour tester les fonctionnalités des Agents</p>
+    </div>
+
+    <div class="button-grid">
+        <button class="btn-popup" @click="showPopup('success')">Succès</button>
+        <button class="btn-popup variant-info" @click="showPopup('info')">Information</button>
+        <button class="btn-popup variant-warn" @click="showPopup('warning')">Attention</button>
+        <button class="btn-popup variant-error" @click="showPopup('error')">Erreur</button>
+        <button class="btn-popup" @click="showPopup('welcome')">Message de bienvenue</button>
+        <button class="btn-popup variant-info" @click="showPopup('generic')">Message générique</button>
+    </div>
+
+    {% verbatim %}
+    <div class="popup-overlay" :class="{ visible: popupVisible }" @click.self="closePopup">
+        <div class="popup">
+            <h3>{{ currentPopup.title }}</h3>
+            <p>{{ currentPopup.message }}</p>
+            <button class="popup-close" @click="closePopup">Fermer</button>
+        </div>
+    </div>
+    {% endverbatim %}
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script>
+const { createApp } = Vue;
+
+const popupMessages = {
+    success: { title: 'Succès', message: 'L\'opération a été réalisée avec succès. Tout fonctionne correctement.' },
+    info: { title: 'Information', message: 'Voici une information utile : cette application a été créée pour tester les Agents Cursor.' },
+    warning: { title: 'Attention', message: 'Veuillez noter cette information importante avant de continuer.' },
+    error: { title: 'Erreur', message: 'Une erreur s\'est produite. Veuillez réessayer ultérieurement.' },
+    welcome: { title: 'Bienvenue', message: 'Bienvenue dans cette application de test ! Nous espérons que vous trouverez les Agents Cursor utiles.' },
+    generic: { title: 'Message', message: 'Ceci est un message générique. Vous pouvez personnaliser ces popups selon vos besoins.' }
+};
+
+createApp({
+    data() {
+        return {
+            popupVisible: false,
+            currentPopup: { title: '', message: '' }
+        };
+    },
+    methods: {
+        showPopup(type) {
+            this.currentPopup = popupMessages[type] || popupMessages.generic;
+            this.popupVisible = true;
+        },
+        closePopup() {
+            this.popupVisible = false;
+        }
+    }
+}).mount('#app');
+</script>
+{% endblock %}

@@ -1,0 +1,11 @@
+services:
+  symfony-app:
+    build:
+      context: .
+      dockerfile: docker/symfony/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./symfony-vue-app/src:/app/src
+      - ./symfony-vue-app/templates:/app/templates
+      - ./symfony-vue-app/config:/app/config
